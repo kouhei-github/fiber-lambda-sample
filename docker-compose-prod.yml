@@ -1,0 +1,21 @@
+version: '3'
+services:
+  go:
+    image: golang-ocr-openai-image
+    container_name: golang-ocr-openai-container
+    build:
+      context: .
+      dockerfile: container/golang/Dockerfile.Prod
+    command: ${GOLANG_COMMAND}
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    volumes:
+      - ./src:/app
+    environment:
+      TZ: Asia/Tokyo
+    env_file:
+      - .env
+    ports:
+      - ${GOLANG_PORT}
+      - ${AIR_TOML_PORT}
