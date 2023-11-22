@@ -1,8 +1,8 @@
 version: '3'
 services:
   go:
-    image: golang-ocr-openai-image
-    container_name: golang-ocr-openai-container
+    image: fiber-lambda-sample-prod-image
+    container_name: fiber-lambda-sample-prod-container
     build:
       context: .
       dockerfile: container/golang/Dockerfile.Prod

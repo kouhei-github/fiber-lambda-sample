@@ -25,14 +25,16 @@ func init() {
 
 	route.LoadRouter(router)
 
+	// fmt.Println(os.Getenv("ENVIRONMENT"))
 	// Webサーバー起動時のエラーハンドリング => localhostの時コメントイン必要
 	if os.Getenv("ENVIRONMENT") == "local" {
-		if err := app.Listen(":8080"); err != nil {
+		if err := router.FiberApp.Listen(":8080"); err != nil {
 			panic(err)
 		}
 	} else {
+		// fmt.Println("lambda")
 		// AWS Lambdaとの連携設定
-		fiberLambda = fiberadapter.New(app)
+		fiberLambda = fiberadapter.New(router.FiberApp)
 	}
 }
 

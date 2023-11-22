@@ -104,6 +104,7 @@ go.work
 /src/zeus-firebase-admin.json
 
 .env
+.env.prod
 src/.env
 .idea
 upload.sh
